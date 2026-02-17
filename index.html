@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrainBurst - AI Quiz Generator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f4fb;
+      color: #2a003f;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background-color: #6a1b9a;
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-size: 32px;
+      display: flex;
+      align-items: center;
+    }
+
+    header img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 600;
+      font-size: 18px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #e1bee7;
+    }
+
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 100px 80px;
+      background: linear-gradient(to right, #a18cd1, #fbc2eb);
+      flex-wrap: wrap;
+    }
+
+    .hero-content {
+      max-width: 50%;
+      color: #2a003f;
+    }
+
+    .hero-content h2 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero-content p {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .hero-content button {
+      font-size: 18px;
+      padding: 12px 25px;
+      background: linear-gradient(to right, #6a1b9a, #8e24aa);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+      margin-right: 10px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .hero-content button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .hero img {
+  max-width: 600px; /* increased size */
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+}
+
+.features {
+  background-color: #fff;
+  padding: 80px 60px;
+}
+
+.features h3 {
+  font-size: 36px;
+  color: #4a0072;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.feature-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.feature-card {
+  background: linear-gradient(135deg, #e1bee7, #f8f4fb);
+  padding: 30px 20px;
+  border-radius: 16px;
+  max-width: 280px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.feature-card img {
+  width: 60px;
+  margin-bottom: 20px;
+}
+
+.feature-card p {
+  font-size: 18px;
+  color: #2a003f;
+}
+
+    .how-it-works .steps {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .how-it-works .step {
+      background-color: #fff;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      max-width: 300px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .how-it-works .step:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+    }
+
+    .how-it-works img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+
+    .how-it-works p {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background-color: #6a1b9a;
+      color: white;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1><img src="images\download (1).jpg" alt="BrainBurst Logo"> BrainBurst</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="team.html">Team</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+      <a href="FAQ.html">FAQ</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Generate quizzes from text, PDFs, videos & more — instantly with AI</h2>
+      <p>For Teachers • Students • HR Teams • Schools</p>
+      <p>Supports high-volume quiz generation of up to 150 quizzes from 100,000 words in 1-click!</p>
+      <p>Upload text, Word docs, PDFs, images, audio, video — or just paste a website URL — all processed in 1-click.</p>
+      <button onclick="window.location.href='login.html'">Login</button>
+      <button onclick="window.location.href='signup.html'">Sign Up</button>
+    </div>
+    <img src="https://img.freepik.com/free-vector/gradient-ai-technology-background_23-2149370124.jpg" alt="AI Illustration">
+  </section>
+
+  <section class="features">
+    <h3>Powerful Features</h3>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <img src="https://img.icons8.com/color/96/document.png" alt="Document Upload">
+        <p>✨ Generate quizzes from documents, PDFs, or even websites.</p>
+      </div>
+      <div class="feature-card">
+        <img src="https://img.icons8.com/color/96/brain.png" alt="AI Brain">
+        <p>🧠 Smart AI ensures meaningful and topic-relevant questions.</p>
+      </div>
+      <div class="feature-card">
+        <img src="https://img.icons8.com/color/96/flash-on.png" alt="Fast">
+        <p>⚡ Generate 150 quizzes instantly — even from long inputs!</p>
+      </div>
+      <div class="feature-card">
+        <img src="https://img.icons8.com/color/96/online.png" alt="Multi-format">
+        <p>📚 Accepts text, DOCX, PDFs, images, audio, and more.</p>
+      </div>
+    </div>
+  </section>
+  
+
+  <section class="how-it-works">
+    <h3>How It Works</h3>
+    <div class="steps">
+      <div class="step">
+        <img src="images/Screenshot (19).png" alt="Step 1">
+        <p>1️⃣ Upload your document or text and choose your quiz settings.</p>
+      </div>
+      <div class="step">
+        <img src="images/Screenshot (20).png" alt="Step 2">
+        <p>2️⃣ Click generate and instantly view high-quality AI-generated questions.</p>
+      </div>
+      <div class="step">
+        <img src="images\Screenshot (30).png" alt="Step 3">
+        <p>3️⃣ Review and export your quizzes for exams, interviews, or learning.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 BrainBurst. All rights reserved.
+  </footer>
+
+</body>
+</html>

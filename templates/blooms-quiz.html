@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bloom's Taxonomy Quiz - BrainBurst</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* General reset and base styles */
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #6a1b9a, #9c27b0);
+      color: #fff;
+    }
+
+    /* Wrapper for the layout */
+    .wrapper {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 50px 20px;
+      gap: 40px;
+    }
+
+    /* Sidebar Styling */
+    .sidebar {
+      width: 280px;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      position: sticky;
+      top: 0;
+    }
+
+    .sidebar h3 {
+      margin-top: 0;
+      text-align: center;
+      color: #6a1b9a;
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+
+    .sidebar button {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 14px;
+      background-color: #6a1b9a;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .sidebar button:hover {
+      background-color: #4a0072;
+    }
+
+    /* Main content container */
+    .container {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .container h2 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .container p {
+      color: #f0f0f0;
+      font-size: 1.3rem;
+      text-align: center;
+    }
+
+    /* Form container styling */
+    #textForm {
+      width: 100%;
+      max-width: 700px;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    #textForm label {
+      display: block;
+      margin-bottom: 12px;
+      font-size: 1.2rem;
+      color: #333;
+      font-weight: 500;
+    }
+
+    #textForm textarea,
+    #textForm select,
+    #textForm input {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 22px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    #textForm button {
+      width: 100%;
+      padding: 14px;
+      background-color: #6a1b9a;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #textForm button:hover {
+      background-color: #4a0072;
+    }
+
+    /* Responsive design for mobile */
+    @media (max-width: 900px) {
+      .wrapper {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .sidebar {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .choice-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <!-- Sidebar Section -->
+    <div class="sidebar">
+      <h3>Menu</h3>
+      <button onclick="location.href='index.html'">Home</button>
+      <button onclick="location.href='blooms-quiz.html'">Bloom's Quiz</button>
+      <button onclick="location.href='similar-quiz.html'">Similar Quiz</button>
+      <button onclick="location.href='illustrate-story.html'">Illustrate Story</button>
+      <button onclick="location.href='image-to-quiz.html'">Image to Quiz</button>
+      <button onclick="location.href='high-volume-quiz.html'">High-Volume Quiz</button>
+      <button onclick="location.href='matching-quiz.html'">Matching Quiz</button>
+      <button onclick="location.href='video-to-quiz.html'">Video to Quiz</button>
+      <button onclick="location.href='learn-from-url.html'">Learn from URL</button>
+      <button onclick="location.href='news-to-quiz.html'">News to Quiz</button>
+      <button onclick="location.href='pdf-to-quiz.html'">PDF to Quiz</button>
+    </div>
+
+    <!-- Main Content Section -->
+    <div class="container">
+      <h2>Generate Bloom's Taxonomy-Based Quizzes</h2>
+
+      <div id="textForm">
+        <label for="textInput">Enter Text</label>
+        <textarea id="textInput" rows="8" placeholder="Paste your content here..."></textarea>
+
+        <label for="fileInput">Or Upload File</label>
+        <input type="file" id="fileInput" accept=".txt, .docx, .pdf" />
+
+        <label for="bloomLevel">Bloom's Taxonomy Level</label>
+        <select id="bloomLevel">
+          <option value="1">Level 1: Remember</option>
+          <option value="2">Level 2: Understand</option>
+          <option value="3">Level 3: Apply</option>
+          <option value="4">Level 4: Analyze</option>
+          <option value="5">Level 5: Evaluate</option>
+        </select>
+
+        <label for="qtype">Question Type</label>
+        <select id="qtype">
+          <option value="mcq">MCQ</option>
+          <option value="truefalse">True/False</option>
+          <option value="fillin">Fill in the Blanks</option>
+          <option value="openended">Open Ended</option>
+        </select>
+
+        <label for="qcount">Number of Questions</label>
+        <input type="number" id="qcount" value="3" min="1" max="50" />
+
+        <button onclick="generateQuiz()">Generate</button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    function generateQuiz() {
+      const text = document.getElementById('textInput').value;
+      const fileInput = document.getElementById('fileInput').files[0];
+      const bloomLevel = document.getElementById('bloomLevel').value;
+      const questionType = document.getElementById('qtype').value;
+      const questionCount = parseInt(document.getElementById('qcount').value);
+
+      if (text.trim() === '' && !fileInput) {
+        alert('Please enter text or upload a file to generate questions.');
+        return;
+      }
+
+      // Store the form data in localStorage for the next page
+      if (text.trim()) localStorage.setItem('quizText', text);
+      if (fileInput) localStorage.setItem('fileInput', fileInput.name);
+      localStorage.setItem('bloomLevel', bloomLevel);
+      localStorage.setItem('questionType', questionType);
+      localStorage.setItem('questionCount', questionCount);
+
+      // Redirect to the quiz generation page
+      window.location.href = 'quiz.html';
+    }
+  </script>
+
+</body>
+</html>

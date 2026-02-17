@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quiz Result - BrainBurst</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #fbc2eb, #a18cd1);
+      padding: 30px;
+      color: #2c003e;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    h2 {
+      text-align: center;
+      color: #6a1b9a;
+      margin-bottom: 20px;
+    }
+    .question {
+      background: #f3e5f5;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+    .question strong {
+      display: block;
+      color: #4a0072;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Your Generated Quiz</h2>
+    <div id="quizContainer"></div>
+  </div>
+
+  <script>
+    const quizData = JSON.parse(localStorage.getItem('quizData') || '[]');
+    const container = document.getElementById('quizContainer');
+
+    quizData.forEach((q, i) => {
+      const div = document.createElement('div');
+      div.className = 'question';
+
+      let html = `<strong>Q${i + 1}: ${q.question}</strong>`;
+      html += `<em>Type: ${q.type}, Difficulty: ${q.difficulty}</em><br>`;
+
+      if (q.options) {
+        html += `<ul>${q.options.map(opt => `<li>${opt}</li>`).join('')}</ul>`;
+      }
+
+      div.innerHTML = html;
+      container.appendChild(div);
+    });
+  </script>
+</body>
+</html>

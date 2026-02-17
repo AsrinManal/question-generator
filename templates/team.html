@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Team - BrainBurst</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f4fb;
+      color: #2a003f;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background-color: #6a1b9a;
+      color: white;
+    }
+
+    header h1 {
+      font-size: 28px;
+      display: flex;
+      align-items: center;
+    }
+
+    header img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    nav a:hover {
+      color: #e1bee7;
+    }
+
+    .team-section {
+      padding: 80px 40px;
+      text-align: center;
+    }
+
+    .team-section h2 {
+      font-size: 40px;
+      color: #4a0072;
+      margin-bottom: 40px;
+    }
+
+    .team-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .member {
+      background-color: #fff;
+      border-radius: 16px;
+      padding: 20px;
+      width: 250px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+    }
+
+    .member:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+    }
+
+    .member img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 15px;
+    }
+
+    .member h3 {
+      font-size: 20px;
+      color: #6a1b9a;
+      margin-bottom: 5px;
+    }
+
+    .member p {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .member a {
+      font-size: 14px;
+      color: #6a1b9a;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background-color: #6a1b9a;
+      color: white;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1><img src="https://img.icons8.com/color/48/brain.png" alt="BrainBurst Logo"> BrainBurst</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="team.html">Team</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+      <a href="FAQ.html">FAQ</a>
+    </nav>
+  </header>
+
+  <section class="team-section">
+    <h2>Meet Our Team</h2>
+    <div class="team-grid">
+      <div class="member">
+        <img src="https://via.placeholder.com/120" alt="Team Member 1" />
+        <h3>N.vajiha nadeen</h3>
+        <p>Frontend Developer</p>
+        <a href="#">LinkedIn</a>
+      </div>
+      <div class="member">
+        <img src="https://via.placeholder.com/120" alt="Team Member 2" />
+        <h3>M.Asrin manal</h3>
+        <p>Backend Engineer</p>
+        <a href="#">GitHub</a>
+      </div>
+    
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 BrainBurst. All rights reserved.
+  </footer>
+
+</body>
+</html>

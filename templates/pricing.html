@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pricing - BrainBurst</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f4fb;
+      color: #2a003f;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background-color: #6a1b9a;
+      color: white;
+    }
+
+    header h1 {
+      font-size: 28px;
+      display: flex;
+      align-items: center;
+    }
+
+    header img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    nav a:hover {
+      color: #e1bee7;
+    }
+
+    .pricing-section {
+      padding: 80px 40px;
+      text-align: center;
+    }
+
+    .pricing-section h2 {
+      font-size: 40px;
+      color: #4a0072;
+      margin-bottom: 40px;
+    }
+
+    .pricing-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      width: 300px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+    }
+
+    .card h3 {
+      font-size: 24px;
+      color: #6a1b9a;
+      margin-bottom: 15px;
+    }
+
+    .card .price {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .card ul li {
+      margin-bottom: 10px;
+    }
+
+    .card button {
+      background: linear-gradient(to right, #6a1b9a, #8e24aa);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .card button:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background-color: #6a1b9a;
+      color: white;
+      font-size: 16px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .pricing-cards {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1><img src="https://img.icons8.com/color/48/brain.png" alt="BrainBurst Logo"> BrainBurst</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="team.html">Team</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+      <a href="FAQ.html">FAQ</a>
+    </nav>
+  </header>
+
+  <section class="pricing-section">
+    <h2>Choose the Right Plan for You</h2>
+    <div class="pricing-cards">
+      <div class="card">
+        <h3>Free Plan</h3>
+        <p class="price">$0/mo</p>
+        <ul>
+          <li>✅ 5 quizzes/month</li>
+          <li>✅ Supports text & PDFs</li>
+          <li>❌ No video/audio support</li>
+          <li>❌ No export feature</li>
+        </ul>
+        <button>Get Started</button>
+      </div>
+
+      <div class="card">
+        <h3>Pro Plan</h3>
+        <p class="price">$9.99/mo</p>
+        <ul>
+          <li>✅ 150 quizzes/month</li>
+          <li>✅ Text, PDF, video & audio</li>
+          <li>✅ Export as PDF/CSV</li>
+          <li>✅ Email support</li>
+        </ul>
+        <button>Upgrade</button>
+      </div>
+
+      <div class="card">
+        <h3>Enterprise</h3>
+        <p class="price">Custom</p>
+        <ul>
+          <li>✅ Unlimited quizzes</li>
+          <li>✅ API access</li>
+          <li>✅ Team collaboration</li>
+          <li>✅ 24/7 priority support</li>
+        </ul>
+        <button>Contact Sales</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 BrainBurst. All rights reserved.
+  </footer>
+
+</body>
+</html>

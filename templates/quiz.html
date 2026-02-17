@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz - BrainBurst</title>
+  <style>
+    body {
+      background: #fafafa;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    h2 {
+      color: #6a1b9a;
+      text-align: center;
+    }
+    .question {
+      background: #fff;
+      margin-bottom: 15px;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .option {
+      margin-top: 5px;
+      display: block;
+      padding: 5px;
+      border-radius: 4px;
+    }
+    input[type="text"] {
+      margin-top: 10px;
+      padding: 8px;
+      width: 100%;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 12px 20px;
+      background-color: #6a1b9a;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 20px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    button:hover {
+      background-color: #4a0072;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h2>Generated Quiz Questions</h2>
+  <div id="questionsContainer"></div>
+
+  <button onclick="submitQuiz()">Submit Quiz</button>
+  <button onclick="downloadQuiz()">Download Quiz</button>
+  <div id="result"></div>
+
+  <script>
+    const text = localStorage.getItem('quizText') || "The human brain is one of the most complex organs. It controls breathing. The cortex helps reasoning. The cerebellum manages movement. The limbic system stores emotion.";
+    const type = localStorage.getItem('questionType') || "Fill in the Blanks"; // Can be "MCQ", "True/False", or "Fill in the Blanks"
+    const count = parseInt(localStorage.getItem('questionCount')) || 5;
+    const difficulty = localStorage.getItem('difficulty') || "medium";
+    const mcqCount = parseInt(localStorage.getItem('mcqCount')) || 4;
+
+    const selectedAnswers = new Array(count).fill(null);
+    const questions = generateQuestions(text, count, type, difficulty, mcqCount);
+    const questionsContainer = document.getElementById('questionsContainer');
+
+    questions.forEach((q, index) => {
+      const div = document.createElement('div');
+      div.className = 'question';
+
+      const questionHTML = `<p><strong>Q${index + 1}:</strong> ${q.question}</p>`;
+      let optionsHTML = '';
+
+      if (q.type === 'MCQ' && Array.isArray(q.options)) {
+        q.options.forEach((option, optIdx) => {
+          const id = `q${index}_opt${optIdx}`;
+          optionsHTML += `
+            <label class="option" id="label_${id}">
+              <input type="radio" id="${id}" name="question${index}" value="${option}" onchange="selectedAnswers[${index}] = this.value">
+              ${option}
+            </label>`;
+        });
+      } else if (q.type === 'True/False') {
+        q.options.forEach((option, optIdx) => {
+          const id = `q${index}_opt${optIdx}`;
+          optionsHTML += `
+            <label class="option" id="label_${id}">
+              <input type="radio" id="${id}" name="question${index}" value="${option}" onchange="selectedAnswers[${index}] = this.value">
+              ${option}
+            </label>`;
+        });
+      } else if (q.type === 'Fill in the Blanks') {
+        optionsHTML += `
+          <input type="text" id="fill${index}" placeholder="Type your answer here" onchange="selectedAnswers[${index}] = this.value">`;
+      }
+
+      div.innerHTML = questionHTML + optionsHTML;
+      questionsContainer.appendChild(div);
+    });
+
+    function generateQuestions(text, count, type, difficulty, mcqCount) {
+      const sentences = text.split(/[.!?]/).filter(Boolean);
+      const questions = [];
+
+      for (let i = 0; i < count && i < sentences.length; i++) {
+        const sentence = sentences[i].trim();
+        if (!sentence) continue;
+
+        let correctAnswer;
+        let options = null;
+
+        if (type === 'MCQ') {
+          const result = generateMCQOptions(mcqCount, sentence);
+          options = result.options;
+          correctAnswer = result.correct;
+        } else if (type === 'True/False') {
+          options = ["True: The statement is correct.", "False: The statement is incorrect."];
+          correctAnswer = options[0];
+        } else if (type === 'Fill in the Blanks') {
+          const blanked = sentence.replace(/\b(\w+)\b/, '____');
+          options = blanked;
+          correctAnswer = sentence;
+        }
+
+        const question = {
+          id: i,
+          question: type === 'Fill in the Blanks' ? `Fill in the blank: ${options}` : `What is described in this sentence: "${sentence}"?`,
+          type,
+          difficulty,
+          options: type === 'Fill in the Blanks' ? null : options,
+          correctAnswer
+        };
+
+        questions.push(question);
+      }
+
+      return questions;
+    }
+
+    function generateMCQOptions(mcqCount, sentence) {
+      const correct = sentence.split(' ').slice(0, 3).join(' ') + "...";
+      const correctOption = `Option 1: ${correct}`;
+      const distractors = [
+        "A common myth", "The wrong interpretation", "Opposite idea",
+        "Completely unrelated fact", "Partial truth", "Misleading concept"
+      ];
+      const options = [correctOption];
+      while (options.length < mcqCount) {
+        const label = `Option ${options.length + 1}`;
+        const distractor = `${label}: ${distractors[Math.floor(Math.random() * distractors.length)]}`;
+        if (!options.includes(distractor)) options.push(distractor);
+      }
+      return {
+        options: options.sort(() => Math.random() - 0.5),
+        correct: correctOption
+      };
+    }
+
+    function submitQuiz() {
+      let correct = 0;
+
+      questions.forEach((q, i) => {
+        if (q.type === 'Fill in the Blanks') {
+          const input = document.getElementById(`fill${i}`);
+          const userAnswer = selectedAnswers[i]?.trim().toLowerCase() || '';
+          const correctAnswer = q.correctAnswer.trim().toLowerCase();
+
+          if (userAnswer === correctAnswer) {
+            input.style.backgroundColor = '#c8e6c9'; // Green
+            correct++;
+          } else {
+            input.style.backgroundColor = '#ffcdd2'; // Red
+          }
+        } else {
+          const options = document.querySelectorAll(`input[name="question${i}"]`);
+          options.forEach((opt, idx) => {
+            const label = document.getElementById(`label_${opt.id}`);
+            label.style.backgroundColor = 'transparent';
+
+            if (opt.checked) {
+              if (opt.value === q.correctAnswer) {
+                label.style.backgroundColor = '#c8e6c9'; // Green
+                correct++;
+              } else {
+                label.style.backgroundColor = '#ffcdd2'; // Red
+              }
+            }
+          });
+        }
+      });
+
+      const resultDiv = document.getElementById('result');
+      resultDiv.innerHTML = `You got ${correct} out of ${questions.length} correct.`;
+    }
+
+    function downloadQuiz() {
+      let output = 'Quiz Results:\n\n';
+
+      questions.forEach((q, i) => {
+        output += `Q${i + 1}: ${q.question}\n`;
+        output += `Your Answer: ${selectedAnswers[i] || 'Not answered'}\n`;
+        output += `Correct Answer: ${q.correctAnswer}\n\n`;
+      });
+
+      const blob = new Blob([output], { type: 'text/plain' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'quiz_results.txt';
+      link.click();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Start - BrainBurst</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* General reset and base styles */
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9fafb;
+      color: #333;
+    }
+
+    /* Wrapper for the layout */
+    .wrapper {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 50px 20px;
+      gap: 40px;
+    }
+
+    /* Sidebar Styling */
+    .sidebar {
+      width: 220px;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+    }
+
+    .sidebar h3 {
+      margin-top: 0;
+      text-align: center;
+      color: #3b3b3b;
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin-bottom: 30px;
+    }
+
+    .sidebar button {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 12px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .sidebar button:hover {
+      background-color: #2980b9;
+    }
+
+    /* Main content container */
+    .container {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .container h2 {
+      font-size: 2rem;
+      font-weight: 500;
+      color: #2c3e50;
+    }
+
+    .container p {
+      color: #7f8c8d;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+
+    /* Button container for center alignment */
+    .choice-buttons {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .choice-buttons button {
+      width: 200px;
+      padding: 15px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .choice-buttons button:hover {
+      background-color: #2980b9;
+    }
+
+    /* Form container styling */
+    #textForm {
+      display: none;
+      width: 100%;
+      max-width: 500px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    #textForm label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1rem;
+      color: #2c3e50;
+      font-weight: 500;
+    }
+
+    #textForm textarea,
+    #textForm select,
+    #textForm input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    #textForm button {
+      width: 100%;
+      padding: 12px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #textForm button:hover {
+      background-color: #2980b9;
+    }
+
+    /* Responsive design for mobile */
+    @media (max-width: 900px) {
+      .wrapper {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .sidebar {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .choice-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <!-- Sidebar Section -->
+    <div class="sidebar">
+      <h3>Menu</h3>
+      <button onclick="location.href='index.html'">Home</button>
+      <button onclick="location.href='blooms-quiz.html'">Bloom's Quiz</button>
+      <button onclick="location.href='similar-quiz.html'">Similar Quiz</button>
+      <button onclick="location.href='illustrate-story.html'">Illustrate Story</button>
+      <button onclick="location.href='image-to-quiz.html'">Image to Quiz</button>
+      <button onclick="location.href='high-volume-quiz.html'">High-Volume Quiz</button>
+      <button onclick="location.href='matching-quiz.html'">Matching Quiz</button>
+      <button onclick="location.href='video-to-quiz.html'">Video to Quiz</button>
+      <button onclick="location.href='learn-from-url.html'">Learn from URL</button>
+      <button onclick="location.href='news-to-quiz.html'">News to Quiz</button>
+      <button onclick="location.href='pdf-to-quiz.html'">PDF to Quiz</button>
+    </div>
+
+    <!-- Main Content Section -->
+    <div class="container">
+      <h2>Generate High-Quality Quizzes with AI</h2>
+      <p>Create MCQs, True/False, Fill in the Blanks, or Open-ended questions instantly from your text!</p>
+
+      <div class="choice-buttons">
+        <button onclick="navigateToUpload()">Upload Files</button>
+        <button onclick="showTextInput()">Enter Text</button>
+      </div>
+
+      <div id="textForm">
+        <label for="textInput">Enter Text</label>
+        <textarea id="textInput" rows="10" placeholder="Paste your content here..."></textarea>
+
+        <label for="qtype">Question Type</label>
+        <select id="qtype">
+          <option>MCQ</option>
+          <option>True/False</option>
+          <option>Fill in the Blanks</option>
+          <option>Open Ended</option>
+        </select>
+
+        <label for="qcount">Number of Questions</label>
+        <input type="number" id="qcount" value="3" min="1" max="50" />
+
+        <label for="difficulty">Difficulty Level</label>
+        <select id="difficulty">
+          <option>Easy</option>
+          <option selected>Medium</option>
+          <option>Hard</option>
+        </select>
+
+        <label for="mcqcount">MCQ Option Count</label>
+        <input type="number" id="mcqcount" value="4" min="2" max="6" />
+
+        <button onclick="generateQuiz()">Generate</button>
+
+        <div id="questionsContainer"></div>
+        <button onclick="downloadQuiz()" id="downloadBtn">Download Quiz</button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    function navigateToUpload() {
+      window.location.href = 'upload.html';
+    }
+
+    function showTextInput() {
+      document.getElementById('textForm').style.display = 'block';
+    }
+
+    function generateQuiz() {
+      const text = document.getElementById('textInput').value;
+      const questionType = document.getElementById('qtype').value;
+      const questionCount = parseInt(document.getElementById('qcount').value);
+      const difficulty = document.getElementById('difficulty').value;
+      const mcqCount = parseInt(document.getElementById('mcqcount').value);
+
+      if (text.trim() === '') {
+        alert('Please enter some text to generate questions.');
+        return;
+      }
+
+      localStorage.setItem('quizText', text);
+      localStorage.setItem('questionType', questionType);
+      localStorage.setItem('questionCount', questionCount);
+      localStorage.setItem('difficulty', difficulty);
+      localStorage.setItem('mcqCount', mcqCount);
+
+      window.location.href = 'quiz.html';
+    }
+
+    function downloadQuiz() {
+      // Placeholder for download logic
+      alert('Download functionality will be implemented.');
+    }
+  </script>
+
+</body>
+</html>
